@@ -2,7 +2,7 @@ import createLogger from "../src";
 
 const originalLog = console.log;
 
-describe("simpleLogger", () => {
+describe("logger", () => {
   afterEach(() => (console.log = originalLog));
 
   it('should have the same logging methods as the "console" object', () => {
@@ -17,9 +17,7 @@ describe("simpleLogger", () => {
   });
 
   it("should allow for a prefix", () => {
-    const logger = createLogger({
-      prefix: "test/simpleLogger",
-    });
+    const logger = createLogger("test/logger");
     const consoleLogSpy = jest.spyOn(console, "log");
     const loggerLogSpy = jest.spyOn(logger, "log");
 
@@ -34,8 +32,7 @@ describe("simpleLogger", () => {
 
   // Test not really useful (won't catch regression), don't know how to check this properly
   it("should not print when disabled", () => {
-    const logger = createLogger({
-      prefix: "test/simpleLogger",
+    const logger = createLogger("test/logger", {
       shouldPrint: () => false,
     });
     const loggerLogSpy = jest.spyOn(logger, "log");
@@ -46,9 +43,7 @@ describe("simpleLogger", () => {
   });
 
   it("should colorize log", () => {
-    const logger = createLogger({
-      prefix: "test/simpleLogger/colorize/log",
-    });
+    const logger = createLogger("test/logger/colorize/log");
     const loggerLogSpy = jest.spyOn(logger, "log");
 
     logger.log("Should colorize log");
@@ -58,9 +53,7 @@ describe("simpleLogger", () => {
   // No idea how to test if the output is actually being colored
   // This test is only useful because it's visual, but regressions won't be detected automatically
   it("should colorize debug", () => {
-    const logger = createLogger({
-      prefix: "test/simpleLogger/colorize/debug",
-    });
+    const logger = createLogger("test/logger/colorize/debug");
     const loggerDebugSpy = jest.spyOn(logger, "debug");
 
     logger.debug("Should colorize debug");

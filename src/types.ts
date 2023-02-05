@@ -1,6 +1,6 @@
 import type { Console } from "node:console";
 
-export type SimpleLogger = Console;
+export type Logger = Console;
 export type PrintMode =
   | "debug"
   | "error"
@@ -10,8 +10,7 @@ export type PrintMode =
   | "log"
   | "warn";
 
-export type SimpleLoggerOptions = {
-  prefix?: string;
+export type LoggerOptions = {
   disableAutoWrapPrefix?: boolean;
   colorize?: Colorize;
   shouldPrint?: ShouldPrint;

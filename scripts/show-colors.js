@@ -1,11 +1,9 @@
 const createLogger = require("../dist/index").default;
 
-const logger = createLogger({});
+const logger = createLogger();
 logger.log('Logger "log" test');
 
-const loggerWithPrefix = createLogger({
-  prefix: "Awesome logger",
-});
+const loggerWithPrefix = createLogger("MyLogger");
 loggerWithPrefix.debug('Logger "debug" test');
 loggerWithPrefix.error('Logger "error" test');
 loggerWithPrefix.group('Logger "group" test');

@@ -1,6 +1,6 @@
 {
   "name": "@rasri/log",
-  "version": "1.0.0",
+  "version": "1.2.0",
   "description": "Simple universal logger for node/browser, with prefix, time and colors\n\n",
   "homepage": "https://github.com/rasreee/rasri-log",
   "bugs": {
@@ -12,16 +12,24 @@
   },
   "license": "MIT",
   "author": "rasreee",
+  "type": "commonjs",
+  "exports": {
+    ".": {
+      "types": "./dist/index.d.ts",
+      "import": "./dist/index.mjs",
+      "require": "./dist/index.js"
+    },
+    "./package.json": "./package.json"
+  },
   "main": "dist/index.js",
-  "module": "dist/logger.esm.js",
-  "typings": "dist/index.d.ts",
-  "files": [
-    "dist",
-    "src"
-  ],
+  "module": "dist/index.mjs",
+  "types": "dist/index.d.ts",
   "scripts": {
+    "g:tsup": "tsup src --tsconfig tsconfig.lib.json",
+    "build": "pnpm g:tsup --dts",
+    "build:fast": "pnpm g:tsup",
+    "dev": "pnpm build:fast -- --watch",
     "analyze": "size-limit --why",
-    "build": " tsdx build --tsconfig tsconfig.lib.json",
     "clean": "pnpm g:run-p \"clean:*\"",
     "clean:build": "rimraf dist",
     "clean:cache": "rimraf .cache",
@@ -41,7 +49,6 @@
     "prepare": "is-ci || husky install",
     "release": "pnpm publish",
     "size": "size-limit",
-    "start": "tsdx watch",
     "test": "jest",
     "test:changed": "pnpm jest --changedSince main",
     "test:watch": "pnpm test --watch",
@@ -73,8 +80,8 @@
     "size-limit": "8.1.2",
     "ts-jest": "^29.0.5",
     "ts-node": "^10.9.1",
-    "tsdx": "0.14.1",
     "tslib": "2.5.0",
+    "tsup": "^6.5.0",
     "typescript": "4.9.4"
   },
   "peerDependencies": {
@@ -96,5 +103,13 @@
       "path": "dist/logger.esm.js",
       "limit": "10 KB"
     }
-  ]
+  ],
+  "tsup": {
+    "clean": true,
+    "target": "es2019",
+    "format": [
+      "cjs",
+      "esm"
+    ]
+  }
 }

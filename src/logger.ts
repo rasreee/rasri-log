@@ -5,27 +5,32 @@ import {
   shouldShowTimeFallback,
   timeFormatFallback,
 } from "./defaults";
-import type { SimpleLogger, SimpleLoggerOptions } from "./types";
+import type { Logger, LoggerOptions } from "./types";
 
 /**
  * Creates a logger object containing the same "print" API as the console object.
  *
  * Compatible with server and browser. (universal)
  *
+ * @param label
  * @param options
  */
-export const createLogger = (options?: SimpleLoggerOptions): SimpleLogger => {
+export const createLogger = (
+  label?: string,
+  options?: LoggerOptions
+): Logger => {
   const {
-    prefix,
     shouldPrint = shouldPrintFallback,
     disableAutoWrapPrefix = false,
     shouldShowTime = shouldShowTimeFallback,
     timeFormat = timeFormatFallback,
     colorize = colorizeFallback,
   } = options || {};
+
   const _prefix: string | undefined =
-    disableAutoWrapPrefix || !prefix?.length ? prefix : `[${prefix}]`;
-  const prefixes: string[] = []; // Contains an array of prefixes (tags, time, etc.)
+    disableAutoWrapPrefix || !label?.length ? label : `[${label}]`;
+
+  const prefixes: string[] = []; // Array of prefixes
 
   if (shouldShowTime()) {
     prefixes.push(timeFormat());
@@ -36,7 +41,7 @@ export const createLogger = (options?: SimpleLoggerOptions): SimpleLogger => {
   }
 
   return {
-    ...console, // Provides the same API as the native "console" object, while overwriting a few specific methods below
+    ...console,
     debug: shouldPrint("debug")
       ? console.debug.bind(console, ...colorize("debug", prefixes))
       : noop,
