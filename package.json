@@ -1,6 +1,6 @@
 {
   "name": "@rasri/log",
-  "version": "1.2.1",
+  "version": "1.2.2",
   "description": "Simple universal logger for node/browser, with prefix, time and colors\n\n",
   "homepage": "https://github.com/rasreee/rasri-log",
   "bugs": {
@@ -63,6 +63,7 @@
     "@types/shell-quote": "^1.7.1",
     "@typescript-eslint/eslint-plugin": "^5.49.0",
     "@typescript-eslint/parser": "^5.49.0",
+    "chalk": "4.1.2",
     "eslint": "^8.33.0",
     "eslint-config-prettier": "^8.6.0",
     "eslint-plugin-import": "^2.27.5",
@@ -83,6 +84,9 @@
     "tslib": "2.5.0",
     "tsup": "^6.5.0",
     "typescript": "4.9.4"
+  },
+  "peerDependencies": {
+    "chalk": "4.1.2"
   },
   "engines": {
     "node": ">=16"
