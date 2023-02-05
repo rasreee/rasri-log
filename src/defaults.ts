@@ -8,8 +8,12 @@ export const timeFormatFallback: TimeFormat = () => new Date().toLocaleString();
 /**
  * By default, show time unless SIMPLE_LOGGER_SHOULD_SHOW_TIME has been explicitly set to "false".
  */
-export const shouldShowTimeFallback = (): boolean =>
-  process.env.SIMPLE_LOGGER_SHOULD_SHOW_TIME !== "false";
+export const shouldShowTimeFallback = (): boolean => {
+  return (
+    process.env.NODE_ENV === "production" &&
+    process.env.SIMPLE_LOGGER_SHOULD_SHOW_TIME !== "false"
+  );
+};
 
 /**
  * Colorize output.
