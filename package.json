@@ -1,6 +1,6 @@
 {
   "name": "@rasri/log",
-  "version": "1.2.2",
+  "version": "1.2.3",
   "description": "Simple universal logger for node/browser, with prefix, time and colors\n\n",
   "homepage": "https://github.com/rasreee/rasri-log",
   "bugs": {
@@ -13,14 +13,6 @@
   "license": "MIT",
   "author": "rasreee",
   "type": "commonjs",
-  "exports": {
-    ".": {
-      "types": "./dist/index.d.ts",
-      "import": "./dist/index.mjs",
-      "require": "./dist/index.js"
-    },
-    "./package.json": "./package.json"
-  },
   "main": "dist/index.js",
   "module": "dist/index.mjs",
   "types": "dist/index.d.ts",
