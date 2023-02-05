@@ -1,0 +1,19 @@
+# dependencies
+/node_modules
+
+# production
+/dist
+
+# caches
+*.tsbuildinfo
+/tmp
+/.cache
+
+# logs
+*.log*
+
+# misc
+.DS_Store
+*.pem
+.env*
+!.env.example

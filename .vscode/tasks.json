@@ -1,0 +1,43 @@
+{
+  "version": "2.0.0",
+  "presentation": {
+    "clear": true,
+    "reveal": "always",
+    "focus": true,
+    "revealProblems": "always"
+  },
+  "tasks": [
+    {
+      "label": "typecheck",
+      "type": "typescript",
+      "problemMatcher": ["$tsc"],
+      "tsconfig": "tsconfig.spec.json",
+      "runOptions": {
+        "instanceLimit": 1
+      },
+      "group": {
+        "kind": "build",
+        "isDefault": true
+      }
+    },
+    {
+      "label": "typecheck:watch",
+      "type": "typescript",
+      "tsconfig": "tsconfig.spec.json",
+      "option": "watch",
+      "problemMatcher": ["$tsc-watch"],
+      "isBackground": true,
+      "runOptions": {
+        "instanceLimit": 1
+      }
+    },
+    {
+      "label": "eslint",
+      "type": "npm",
+      "script": "eslint",
+      "isBackground": true,
+      "problemMatcher": "$eslint-stylish",
+      "runOptions": { "instanceLimit": 1 }
+    }
+  ]
+}

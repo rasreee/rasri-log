@@ -1,0 +1,10 @@
+.DS_Store
+.env*
+*.log*
+*.pem
+*.tsbuildinfo
+/.cache
+/.husky
+/node_modules
+pnpm-lock.yaml
+yarn.lock
